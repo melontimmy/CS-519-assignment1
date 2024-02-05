@@ -32,9 +32,7 @@ jobs:
         run: |
           npm install
           npm run build
-          rm -r public
-          rm -r node_modules
-          rm -r src
+  
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
