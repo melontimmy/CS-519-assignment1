@@ -26,11 +26,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
           cache-dependency-path: './Node/WEB/package.json'
-
-      - name: npm install, build, and test
-        working-directory: ${{ env.WEB_APP_PACKAGE_PATH }}'
-        run: |
-          npm install
         
       - name: npm install react frontend
         working-directory: ${{ env.FRONTEND_PACKAGE_PATH }}'
