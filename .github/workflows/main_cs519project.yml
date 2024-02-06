@@ -27,8 +27,17 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './Node/WEB/package.json'
         
+      - name: npm install, build, and test
+        working-directory: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: |
+          npm install
+          npm run build
+          rm -r public
+          rm -r node_modules
+          rm -r src
+        
       - name: npm install react frontend
-        working-directory: ./Node/WEB/frontend
+        working-directory: './${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         run: |
           npm install
           npm run build
