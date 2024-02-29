@@ -3,7 +3,7 @@
 
 name: Build and deploy Node.js app to Azure Function App - CS519AzureFunction
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Node/WEB'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Node/API1'
   NODE_VERSION: '20.x'
 
 on:
