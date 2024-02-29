@@ -26,12 +26,12 @@ jobs:
           cache-dependency-path: './Node/API1/package.json'
         
       - name: 'Resolve Project Dependencies Using Npm'
-        shell: pwsh
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npm run build --if-present
           npm run test --if-present
+          rm -r node_modules
           popd
         
       - name: 'Run Azure Functions Action'
