@@ -1,0 +1,48 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure Function App - CS519AzureFunctiohn
+env:
+  AZURE_WEBAPP_NAME: 'CS519Project'
+  WEBAPP_PACKAGE_PATH: 'Node/WEB'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
+  FRONTEND_PACKAGE_PATH: 'Node/WEB/frontend'
+  NODE_VERSION: '20.x'
+
+on:
+  push:
+    branches:
+      - default
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: './Node/API1/package.json'
+        
+      - name: 'Resolve Project Dependencies Using Npm'
+        shell: pwsh
+        run: |
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          npm install
+          npm run build --if-present
+          npm run test --if-present
+          popd
+        
+      - name: 'Run Azure Functions Action'
+        uses: Azure/functions-action@v1
+        id: fa
+        with:
+          app-name: 'CS519AzureFunction'
+          slot-name: 'Production'
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_702573C190DA4582AACD69742E08BA38 }}
+
