@@ -10,18 +10,12 @@
 #   - REGISTRY_PASSWORD
 # 2. Change env variables for your configuration.
 #
-# For more information on:
-#   - GitHub Actions for Azure: https://github.com/Azure/Actions
-#   - Azure Functions Container Action: https://github.com/Azure/functions-container-action
-#   - Azure Service Principal for RBAC: https://github.com/Azure/functions-action#using-azure-service-principal-for-rbac-as-deployment-credential
-#
-# For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples/tree/master/FunctionApp
 
 name: Deploy container to Azure Functions App
 
 on:
   push:
-    branches: ["main"]
+    branches: ["default"]
 
 permissions:
   contents: read
