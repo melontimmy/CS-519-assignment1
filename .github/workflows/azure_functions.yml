@@ -1,12 +1,9 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Function App - CS519AzureFunctiohn
+name: Build and deploy Node.js app to Azure Function App - CS519AzureFunction
 env:
-  AZURE_WEBAPP_NAME: 'CS519Project'
-  WEBAPP_PACKAGE_PATH: 'Node/WEB'
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
-  FRONTEND_PACKAGE_PATH: 'Node/WEB/frontend'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Node/WEB'
   NODE_VERSION: '20.x'
 
 on:
