@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Router} from "react-router-dom";
+import API from './api';
 
 function App() {
   return (
     <div className="App">
         <Router>
             <Routes>
-                <Route path="/api" element={<Home />} />
+                <Route path="/api" element={<API/>} />
             </Routes>
         </Router>
       <header className="App-header">
