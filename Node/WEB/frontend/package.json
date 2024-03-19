@@ -12,6 +12,7 @@
     "react-scripts": "^5.0.1",
     "@azure/keyvault-secrets": "4.8.0",
     "@azure/identity": "4.0.1",
+    "ms-rest-azure":"3.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
