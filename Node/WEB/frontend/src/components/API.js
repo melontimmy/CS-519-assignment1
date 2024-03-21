@@ -3,7 +3,7 @@ import {ManagedIdentityCredential} from "@azure/identity";
 import {SecretClient} from "@azure/keyvault-secrets"
 import { useState, useEffect } from 'react';
 
-const credential = ManagedIdentityCredential();
+const credential = new ManagedIdentityCredential();
 
 const vaultName = "https://cs519keyvault.vault.azure.net/";
 const secretName = "WebAppSecret";
