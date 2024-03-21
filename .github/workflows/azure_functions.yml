@@ -10,6 +10,8 @@ on:
   push:
     branches:
       - default
+    paths:
+    - 'Node/API1/**'
   workflow_dispatch:
 
 jobs:

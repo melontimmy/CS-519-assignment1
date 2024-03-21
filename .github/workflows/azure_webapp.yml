@@ -12,6 +12,8 @@ on:
   push:
     branches:
       - main
+    paths:
+    - 'Node/WEB/**'
   workflow_dispatch:
 
 jobs:

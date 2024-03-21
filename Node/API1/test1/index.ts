@@ -2,6 +2,7 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import {ManagedIdentityCredential} from "@azure/identity";
 import {SecretClient} from "@azure/keyvault-secrets"
 
+
 const credential = new ManagedIdentityCredential();
 
 const vaultName = "https://cs519keyvault.vault.azure.net/";
