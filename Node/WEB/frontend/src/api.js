@@ -1,35 +1,33 @@
+import {DefaultAzureCredential, ManagedIdentityCredential} from "@azure/identity";
+import {SecretClient} from "@azure/keyvault-secrets"
+
+const credential = ManagedIdentityCredential();
+
+const vaultName = "https://cs519keyvault.vault.azure.net/";
+const secretName = "WebAppSecret";
+
+const url = `https://${vaultName}.vault.azure.net`;
+const client = new SecretClient(url, credential);
 
 
-const { SecretClient } = require("@azure/keyvault-secrets");
-const { DefaultAzureCredential } = require("@azure/identity");
 
-function getKeyVaultCredentials(){
-    return msRestAzure.loginWithAppServiceMSI({resource: 'https://cs519keyvault.vault.azure.net/'});
-}
+import { useState, useEffect } from 'react';
 
-function getKeyVaultSecret(credentials) {
-    let keyVaultClient = new KeyVault.KeyVaultClient(credentials);
-    return keyVaultClient.getSecret(KEY_VAULT_URI, 'WebAppSecret', "");
-}
-
-async function API() {
-    let secret1 = ""
-    getKeyVaultCredentials().then(getKeyVaultSecret).then(
-        function (secret){
-            secret1 = secret.value;
+export default function Api() {
+    const [secret, setSecret] = useState(null);
+    useEffect(() => {
+        async function getSecret() {
+            const secret = await client.getSecret(secretName);
+            setSecret()
         }
-    ).catch(
-        function (err) {
-            throw (err);
-        }
+        getSecret();
+    }, [])
+
+    return (
+        <div>
+            <p> The secret value is: {secret.value}</p>
+        </div>
     );
-    
-  return (
-   <div> 
-    <p> test page 123 </p>
-    <p>The value of my secret is {secret1}</p> </div>
-  );
 }
 
-export default API;
 
