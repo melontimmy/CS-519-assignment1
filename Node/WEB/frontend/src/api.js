@@ -12,7 +12,7 @@ const client = new SecretClient(url, credential);
 
 
 export default function API() {
-    const [secret, setSecret] = useState(null);
+    const [secret, setSecret] = useState();
     useEffect(() => {
         async function getSecret() {
             const secret = await client.getSecret(secretName);
@@ -23,7 +23,12 @@ export default function API() {
 
     return (
         <div>
-            <p> The secret value is: {secret.value}</p>
+            <p> Sample Text </p>
+            {secret ? (
+                    <p> The secret value is: {secret.value}</p>
+                ) : (
+                    <p>Loading Secret Value Please wait...</p>
+                )}
         </div>
     );
 }
