@@ -1,4 +1,4 @@
-import {DefaultAzureCredential, ManagedIdentityCredential} from "@azure/identity";
+import {ManagedIdentityCredential} from "@azure/identity";
 import {SecretClient} from "@azure/keyvault-secrets"
 import { useState, useEffect } from 'react';
 
@@ -11,14 +11,12 @@ const url = `https://${vaultName}.vault.azure.net`;
 const client = new SecretClient(url, credential);
 
 
-
-
-export default function Api() {
+export default function API() {
     const [secret, setSecret] = useState(null);
     useEffect(() => {
         async function getSecret() {
             const secret = await client.getSecret(secretName);
-            setSecret()
+            setSecret(secret)
         }
         getSecret();
     }, [])
