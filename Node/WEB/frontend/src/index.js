@@ -7,7 +7,7 @@ import API from "./components/API.js"
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route path="/api" element={<API />} />
+      <Route path="/api" component={<API />} />
     </Routes>
   </Router>,
 
