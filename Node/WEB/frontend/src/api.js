@@ -11,18 +11,20 @@ const url = `https://${vaultName}.vault.azure.net`;
 const client = new SecretClient(url, credential);
 
 
-export default function API() {
+function API() {
     const [secret, setSecret] = useState();
+    
     useEffect(() => {
         async function getSecret() {
-            const secret = await client.getSecret(secretName);
+            let secret = await client.getSecret(secretName);
             setSecret(secret)
         }
         getSecret();
-    }, [])
+    })
 
+    
     return (
-        <div>
+        <div className="API">
             <p> Sample Text </p>
             {secret ? (
                     <p> The secret value is: {secret.value}</p>
@@ -32,5 +34,7 @@ export default function API() {
         </div>
     );
 }
+
+export default API
 
 

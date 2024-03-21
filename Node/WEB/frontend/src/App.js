@@ -1,6 +1,6 @@
 import './App.css';
 import {Routes, Router, Route} from "react-router-dom";
-import API from './api';
+import API from './api.js';
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/api" element={<API/>} />
+                <API/>
             </Routes>
         </Router>
     </div>
